@@ -4,8 +4,8 @@
           <img src="../assets/course_icon.png" alt="">
         </div>
         <div class="courseItem__content">
-          <h4 class="title">Video / Photo make </h4>
-          <p>Free pro app pack and more tutorial</p>
+          <h4 class="title">Video / Filmmaker </h4>
+          <p>You will master Adobe Premiere Pro, DaVinci</p>
         </div>
     </div>
 </template>
@@ -49,6 +49,7 @@ export default {
     font-family: 'NotoSansRegular';
     padding-top: 16px;
     display: grid;
+    margin-right: 16px;
     grid-template-rows: repeat(1fr, 3);
     grid-gap: 8px;
   }
