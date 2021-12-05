@@ -43,32 +43,44 @@ export default {
 </script>
 
 <style>
-  body, html, .home{
-    margin:0;
-    padding:0;
-    min-height: 100vh;
-    background: white;
-  }
   .nav {
     display: grid;
     grid-template-columns: 64px 1fr;
-    height: 160px;
+    min-height: 160px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     width: 100vw;
   }
+  .nav__title {
+    font-family: 'NotoSansRegular';
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-right: 1px solid black;
+  }
   .nav__action {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0 16px;
+    grid-gap: 16px;
+    align-items: center;
+    justify-items: center;
+    padding: 32px 16px;
   }
   .nav__button {
     padding: 0;
     border: none;
-    border-radius: 50px;
+    border-radius: 45%;
+    min-width: 120px;
+    min-height: 120px;
+    max-width: 200px;
+    max-height: 200px;
     width: 30vw;
     height: 30vw;
-    margin: 16px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,20 +96,9 @@ export default {
     background: #E5E5E5;
     border: 1px solid black;
   }
-  .nav__title {
-    font-family: 'NotoSansRegular';
-    writing-mode: vertical-rl;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 20px;
-    text-transform: uppercase;
-    border-right: 1px solid black;
-  }
   .footer_text {
     font-family: 'NotoSansRegular';
     font-size: 20px;
-    margin: 32px 16px auto 64px;
+    margin: 32px 32px auto 64px;
   }
 </style>

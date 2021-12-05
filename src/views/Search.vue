@@ -3,13 +3,14 @@
     <div class="search__progressbar" :style="{width: progressbar + 'vw'}"></div>
     <title-components text="Search"/>
     <div class="search__form">
-      <input placeholder="Enter a search query" type="text" class="search__input">
+      <input v-model="inputVmodel" placeholder="Enter a search query" type="text" class="search__input">
       <button class="search__button" @click="searchButtonClick()">
         <span class="material-icons">search</span>
       </button>
     </div>
     <section class="item__inner">
       <course-components  v-show="courseIsShow"/>
+      <span v-show="isNotFound" class="item__message_notFound">Course not found</span>
     </section>
     <p class="search__message" v-show="messageIsShow">
       Click on the search box to open the keyboard
@@ -19,14 +20,17 @@
 
 <script>
 import titleComponents from '../components/Title.vue'
-import courseComponents from '../components/Course.vue'
+import courseComponents from '../components/CourseItem.vue'
 
 export default {
   data: function () {
     return {
       messageIsShow: false,
       courseIsShow: false,
-      progressbar: 0
+      isNotFound: false,
+      progressbar: 0,
+      inputVmodel: '',
+      course: ['videophoto', 'nodejs']
     }
   },
   components: {
@@ -36,10 +40,29 @@ export default {
   methods: {
     //Имитация загрузки данных, задержка 1s
     searchButtonClick() {
-      this.progressbar = 100;
-      setTimeout(() => {
-        this.courseIsShow = true;
+      let courseName;
+      this.course.forEach(element => {
+        if (element.indexOf(this.inputVmodel) == -1) return;
+        courseName = element;
+        return;
+      });
+      if (!courseName) {
+        // Курс не найден
+        this.progressbar = 100;
+        setTimeout(() => {
         this.messageIsShow = false;
+        this.isNotFound = true;
+        this.courseIsShow = false;
+        this.progressbar = 0;
+      }, 1000);
+        return;
+      }
+      // Курс найден
+      this.progressbar = 100;
+        setTimeout(() => {
+        this.messageIsShow = false;
+        this.isNotFound = false;
+        this.courseIsShow = true;
         this.progressbar = 0;
       }, 1000);
     }
@@ -81,7 +104,8 @@ export default {
     outline-offset: 0;
   }
   .search__button {
-    width: 64px;
+    min-width: 64px;
+    height: 64px;
     border-radius: 0;
     border: none;
     border-left: 1px solid black;
@@ -100,5 +124,25 @@ export default {
     font-size: 20px;
     font-family: 'NotoSansRegular';
     opacity: 0.6;
+  }
+  .item__message_notFound {
+    font-family: 'NotoSansRegular';
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    width: 100vw;
+    margin-top: 32px;
+    opacity: 0.8;
+  }
+  /* For very small display */
+  @media screen and (max-width: 350px) {
+    .search__form {
+      flex-direction: column;
+      height: 128px;
+    }
+    .search__button {
+      border-left: none;
+      border-top: 1px solid black; 
+    }
   }
 </style>
