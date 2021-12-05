@@ -32,12 +32,21 @@
   }
 </script>
 <style>
+  body, html {
+    width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    min-width: 300px;
+    max-width: 900px;
+  }
   header {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid black;
     height: 64px;
     width: 100vw;
+    min-width: 300px;
   }
   .header__navigation_back {
     width: 64px;
