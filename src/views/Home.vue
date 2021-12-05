@@ -16,9 +16,8 @@
     </nav>
     <footer>
       <p class="footer_text">
-        Is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s
+        Search course — give everyone the opportunity to be relevant 
+        and in-demand specialist right now.
       </p>
     </footer>
   </div>
@@ -90,7 +89,7 @@ export default {
   }
   .nav__button_primary {
     background: #F5F22C;
-    border: 1px solid black;
+    /* border: 1px solid black; */
   }
   .nav__button_secondary {
     background: #E5E5E5;

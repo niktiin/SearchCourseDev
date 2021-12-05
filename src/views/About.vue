@@ -1,18 +1,13 @@
 <template>
   <div class="about">
     <title-components text="About"/>
-    <div class="about_wrapper">
+    <div class="about__wrapper">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Adipisci animi sed illo recusandae eos! Eveniet provident,
-        ullam, ducimus ratione sint dolores quidem molestiae nobis
-        ea aperiam commodi minima. Ex, rem!
+        Search course — give everyone the opportunity to be relevant 
+        and in-demand specialist right now. Regardless of age and geography.
       </p>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Adipisci animi sed illo recusandae eos! Eveniet provident,
-        ullam, ducimus ratione sint dolores quidem molestiae nobis
-        ea aperiam commodi minima. Ex, rem!
+        We offer a wide range of courses for professional and personal development.
       </p>
     </div>
   </div>
@@ -39,16 +34,16 @@ export default {
 </script>
 
 <style>
-  .about_wrapper {
+  .about__wrapper {
     border-top: 1px solid black;
     font-family: 'NotoSansRegular';
     padding: 32px 32px 0 64px;
     font-size: 20px;
   }
-  .about_wrapper p {
+  .about__wrapper p {
     margin: 32px 0;
   }
-  .about_wrapper p:first-child{
+  .about__wrapper p:first-child{
     margin-top: 0;
   }
 </style>

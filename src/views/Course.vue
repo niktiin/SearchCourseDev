@@ -7,17 +7,39 @@
         <img src="../assets/course_icon.png" alt="">
       </div>
       <div class="course__content">
-        <h4 class="title">Video / Photo make </h4>
-        <p>Free pro app pack and more tutorial</p>
+        <h4 class="title">Video / Filmmaker </h4>
+        <p>You will master Adobe Premiere Pro, DaVinci</p>
       </div>
     </div>
     <div class="course_desscripion">
+      <h4>
+        Those who want to work in movies or on TV
+      </h4>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Adipisci animi sed illo recusandae eos! Eveniet provident,
-        ullam, ducimus ratione sint dolores quidem molestiae nobis
-        ea aperiam commodi minima. Ex, rem!
+        You will understand how the process of mounting commercials works,
+        films and reports. You will mount the first videos, collect
+        portfolio and you will be able to start a career in the film industry
+        or on television.
       </p>
+      <div class="course__slide">
+        <img src="../assets/course_slide_0.png" alt="">
+      </div>
+      <h4>
+        What will you learn?
+      </h4>
+      <p>
+        <u>Work in Adobe Premiere Pro.</u>
+        Study the tools of the program. You will be able to collect videos from
+        multiple rollers, adjust colors and stabilize
+        image, add captions and work with a multi-camera.
+      </p>
+      <p>
+        <u>Create effects and animations.</u>
+        Get acquainted with Adobe After Effects, learn how to complement
+        video effects, animate text and photos. You will understand,
+        how to style a video and make it original.
+      </p>
+      <span>Links: </span><a class="course__link" href="https://skillbox.ru/course/film-editor/">learn more on skillbox</a>
     </div>
   </div>
 </template>
@@ -82,6 +104,7 @@ export default {
     display: grid;
     grid-template-rows: repeat(1fr, 3);
     grid-gap: 8px;
+    margin-right: 16px;
   }
   .course__content h4 {
     font-size: 20px;
@@ -96,5 +119,21 @@ export default {
     font-family: 'NotoSansRegular';
     margin: 0 32px 0 16px;
     font-size: 18px;
+  }
+  .course_desscripion h4 {
+    margin-bottom: 0;
+  }
+  .course_desscripion p {
+    margin: 16px auto;
+  }
+  .course__slide {
+    display: flex;
+    justify-content: center;
+  }
+  .course__link {
+    padding: 2px 6px;
+    background: #F5F22C;
+    color: black;
+    font-family: 'NotoSansRegular';
   }
 </style>

@@ -3,7 +3,7 @@
     <div class="search__progressbar" :style="{width: progressbar + 'vw'}"></div>
     <title-components text="Search"/>
     <div class="search__form">
-      <input v-model="inputVmodel" placeholder="Enter a search query" type="text" class="search__input">
+      <input v-model="inputVmodel" placeholder="Hint: filmmaker" type="text" class="search__input">
       <button class="search__button" @click="searchButtonClick()">
         <span class="material-icons">search</span>
       </button>
@@ -30,7 +30,7 @@ export default {
       isNotFound: false,
       progressbar: 0,
       inputVmodel: '',
-      course: ['videophoto', 'nodejs']
+      course: ['video / filmmaker', 'nodejs']
     }
   },
   components: {
