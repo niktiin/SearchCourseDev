@@ -10,10 +10,10 @@
     </div>
     <section class="item__inner">
       <course-components  v-show="courseIsShow"/>
-      <span v-show="isNotFound" class="item__message_notFound">Course not found</span>
+      <span v-show="getSearchMessage()" class="search__message">{{getSearchMessage()}}</span>
     </section>
-    <p class="search__message" v-show="messageIsShow">
-      Click on the search box to open the keyboard
+    <p class="search__keyboardHint" v-show="keyboardHintIsShow">
+      {{messageArray[2]}}
     </p>
   </div>
 </template>
@@ -25,12 +25,16 @@ import courseComponents from '../components/CourseItem.vue'
 export default {
   data: function () {
     return {
-      messageIsShow: false,
+      keyboardHintIsShow: false,
       courseIsShow: false,
-      isNotFound: false,
+      searchMessage: null,
+      messageArray: [
+        'Course not found',
+        'Search request length less 3 symbols',
+        'Click on the search box to open the keyboard'
+      ],
       progressbar: 0,
       inputVmodel: '',
-      course: ['video / filmmaker', 'nodejs']
     }
   },
   components: {
@@ -38,38 +42,47 @@ export default {
     courseComponents
   },
   methods: {
-    //Имитация загрузки данных, задержка 1s
     searchButtonClick() {
-      let courseName;
-      this.course.forEach(element => {
-        if (element.indexOf(this.inputVmodel) == -1) return;
-        courseName = element;
+      if (this.inputVmodel.length < 3) {
+        this.searchMessage = this.messageArray[1];
         return;
-      });
-      if (!courseName) {
+      }
+      //Имитация загрузки данных с сервера, задержка 1с
+      const findCourse = this.$store.getters.courseRequest(this.inputVmodel);
+      if (!findCourse) {
         // Курс не найден
         this.progressbar = 100;
         setTimeout(() => {
-        this.messageIsShow = false;
-        this.isNotFound = true;
-        this.courseIsShow = false;
-        this.progressbar = 0;
-      }, 1000);
+          this.keyboardHintIsShow = false;
+          this.searchMessage = this.messageArray[0];
+          this.courseIsShow = false;
+          this.progressbar = 0;
+        }, 1000);
         return;
       }
       // Курс найден
       this.progressbar = 100;
         setTimeout(() => {
-        this.messageIsShow = false;
-        this.isNotFound = false;
-        this.courseIsShow = true;
-        this.progressbar = 0;
-      }, 1000);
+          this.keyboardHintIsShow = false;
+          this.courseIsShow = true;
+          this.progressbar = 0;
+        }, 1000);
+    },
+    // Установка таймера на сообщение
+    getSearchMessage() {
+      if (this.searchMessage) {
+        setTimeout(() => {
+          this.searchMessage = null;
+        }, 2000);
+        return this.searchMessage;
+      }
+      return null;
     }
   },
   mounted() {
+    // Активация подсказки, задержка 2с
     setTimeout(() => {
-      this.messageIsShow = true
+      this.keyboardHintIsShow = true
     }, 2000);
   }
 }
@@ -115,7 +128,7 @@ export default {
     font-size: 28px;
     transform: translateY(2px);
   }
-  .search__message {
+  .search__keyboardHint {
     position: absolute;
     bottom:64px;
     text-align: center;
@@ -125,13 +138,13 @@ export default {
     font-family: 'NotoSansRegular';
     opacity: 0.6;
   }
-  .item__message_notFound {
+  .search__message {
     font-family: 'NotoSansRegular';
     font-size: 20px;
     display: block;
     text-align: center;
-    width: 100vw;
-    margin-top: 32px;
+    width: calc(100vw - 32px);
+    margin: 32px 16px 0 16px;
     opacity: 0.8;
   }
   /* For very small display */

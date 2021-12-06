@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <div class="screenOnlyMobile">
+      <h1>This page for only mobile</h1>
+      <h4>please use the development tools or phone</h4>
+    </div>
     <header>
       <button @click="navigationBackClick()"
               v-show="navigationBackIsShow()"
@@ -73,5 +77,34 @@
   }
   .header__title > img{
     transform: translateX(-5px);
+  }
+  .screenOnlyMobile {
+    visibility: hidden;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background: white;
+    font-family: 'NotoSansRegular';
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  /* For very small display */
+  @media screen and (min-width: 700px) {
+    .screenOnlyMobile {
+      visibility: visible;
+    }
+    .screenOnlyMobile h1 {
+      font-size: 5vw;
+    }
+    .screenOnlyMobile h4 {
+      font-size: 3vw;
+      opacity: 0.5;
+    }
   }
 </style>
